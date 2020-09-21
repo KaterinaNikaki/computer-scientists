@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VueJS Sample</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+            <h1 class="display-4">Computer Scientists</h1>
+            <p class="lead">This is a non complete list of known computer scientists</p>
+        </div>
+    </div>
+    <div id="csApp" class="container">
+        <div class="row">
+            <div class="col">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <button class="btn btn-success" type="button" id="button-addon2" v-on:click="clearSearch">Clear</button>
+                    </div> <input type="text" class="form-control" placeholder="Search term" v-model="searchTerm">
+                    <div class="input-group-append">
+                        <button class="btn btn-success" type="button" id="button-addon2" v-on:click="filterList">
+
+                            Filter for {{searchTerm}}
+                        </button>
+                    </div>
+                </div>
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <th scope="col"
+                                v-on:click="compareByProperty('firstname')">First</th>
+                            <th scope="col"
+                                v-on:click="compareByProperty('lastname')">Last</th>
+                            <th scope="col"
+                                v-on:click="compareByProperty('birthdate')">Birthdate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="scientist in scientists">
+                            <td>{{scientist.firstname}}</td>
+                            <td>{{scientist.lastname}}</td>
+                            <td>{{scientist.birthdate}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+
+</html>
